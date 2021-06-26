@@ -20,8 +20,8 @@ public class ColorPicker : MonoBehaviour
         {
             var newButton = Instantiate(ColorButtonPrefab, transform);
             newButton.GetComponent<Image>().color = color;
-            
-            newButton.onClick.AddListener(() =>
+            newButton.onClick.AddListener(
+                () =>
             {
                 SelectedColor = color;
                 foreach (var button in m_ColorButtons)
@@ -32,12 +32,12 @@ public class ColorPicker : MonoBehaviour
                 newButton.interactable = false;
                 
                 onColorChanged.Invoke(SelectedColor);
-            });
+            }
+            );
             
             m_ColorButtons.Add(newButton);
         }
     }
-
     public void SelectColor(Color color)
     {
         for (int i = 0; i < AvailableColors.Length; ++i)
